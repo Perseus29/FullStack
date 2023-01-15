@@ -1,0 +1,17 @@
+GET http://localhost:3001/todos
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text":"Order Pen"
+}
+
+###
+
+DELETE http://localhost:3001/todo/delete/663c3bf35056b5df0a7fd5ea3
+
+###
+
+PUT http://localhost:3001/todo/complete/63c3bf35056b5df0a7fd5ea3
