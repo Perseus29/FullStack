@@ -2,10 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Todo = require('./models/Todo');
-const dotenv = require('dotenv');
 const app = express();
 
-dotenv.config({path: './config.env' });
 
 const db = process.env.DATABASE;
 
@@ -53,11 +51,6 @@ app.get('/todo/complete/:id', async (req, res) => {
 
     res.json(todo);
 })
-
-if (process.env.NODE_ENV == "production") {
-    app.use(express.static("client/build"));
-}
-
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
