@@ -1,6 +1,5 @@
 import { useState , useEffect } from 'react';
 
-const API_BASE = "http://localhost:3001";
 
 function App() {
 
@@ -13,14 +12,14 @@ function App() {
   },[]);
 
   const GetTodos =  () =>{
-    fetch(API_BASE + "/todos")
+    fetch("/todos")
       .then(res => res.json())
       .then(data => setTodos(data))
       .catch(err => console.error("Error: ",err));
   }
 
   const completeTodo = async id => {
-    const data = await fetch(API_BASE + "/todo/complete/" + id)
+    const data = await fetch("/todo/complete/" + id)
       .then(res => res.json());
 
       setTodos(todos => todos.map(todo => {
@@ -33,7 +32,7 @@ function App() {
   }
 
   const deleteTodo = async id => {
-    const data = await fetch(API_BASE + "/todo/delete/" + id, {
+    const data = await fetch("/todo/delete/" + id, {
       method: "DELETE"
     }).then(res => res.json());
 
@@ -41,7 +40,7 @@ function App() {
   }
 
   const addTodo = async () => {
-    const data = await fetch(API_BASE + "/todo/new",{
+    const data = await fetch("/todo/new",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
